@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100..900&display=swap');
+
+:root{
+--heading1:"Big Shoulders Text", serif;
+--heading1_size:120px;
+--primary_color:#121212;
+--vivid_color:#E0F11F;
+}
+
+/* .big-shoulders-text-Name {
+    font-family: "Big Shoulders Text", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }  */
+
+body{
+    background: var(--primary_color);
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    /* height: 100vh; */
+    font-family: var(--heading1);
+    color: var(--vivid_color);
+}
+/* section{
+    height: 200px;
+} */
+
+.herosection{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 10px solid red;
+}
+.herosection .name{
+    text-align: center;
+    line-height: 0%;
+    font-family: var(--heading1);
+    font-size: var(--heading1_size);
+}
