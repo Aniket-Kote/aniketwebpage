@@ -1,190 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aniket Kote — Creative Technologist</title>
+  <link rel="stylesheet" href="style/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0f0f11;
-      --fg: #e4e4e4;
-      --accent: #78e2a0;
-      --secondary: #bbbbbb;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      scroll-behavior: smooth;
-    }
-    header {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: linear-gradient(to bottom right, #191919, #121212);
-      padding: 0 20px;
-    }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-    }
-    header p {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      color: var(--secondary);
-    }
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(15, 15, 17, 0.95);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 12px;
-      z-index: 1000;
-      border-bottom: 1px solid #222;
-    }
-    nav a {
-      color: var(--fg);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: var(--accent);
-    }
-    section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-    h2 {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-    .intro-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      margin: 30px auto 10px;
-      object-fit: cover;
-    }
-    .projects, .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .project, .skill-item {
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
-    .project:hover, .skill-item:hover {
-      transform: translateY(-5px);
-    }
-    .project h3, .skill-item h3 {
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-    .project p, .skill-item p {
-      color: var(--secondary);
-      font-size: 0.95rem;
-    }
-    ul {
-      padding-left: 20px;
-      line-height: 1.8;
-      color: var(--secondary);
-    }
-    footer {
-      background: #111;
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.9rem;
-      color: var(--secondary);
-    }
-
-    @media screen and (max-width: 768px) {
-  header h1 {
-    font-size: 2rem;
-  }
-  header p {
-    font-size: 0.95rem;
-  }
-  .intro-img {
-    width: 110px;
-    height: 110px;
-  }
-  h2 {
-    font-size: 1.4rem;
-  }
-  nav {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .projects, .skills-grid {
-    grid-template-columns: 1fr;
-  }
-  section {
-    padding: 40px 15px;
-  }
-  .project, .skill-item {
-    padding: 16px;
-  }
-  ul {
-    padding-left: 15px;
-  }
-  #scrollTopBtn {
-    bottom: 20px;
-    right: 20px;
-    padding: 8px 12px;
-    font-size: 1rem;
-  }
-}
-      header p {
-        font-size: 1rem;
-      }
-      .intro-img {
-        width: 120px;
-        height: 120px;
-      }
-      h2 {
-        font-size: 1.5rem;
-      }
-    }
-      #scrollTopBtn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      padding: 10px 14px;
-      font-size: 1.2rem;
-      background-color: var(--accent);
-      color: var(--bg);
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      display: none;
-      transition: all 0.3s ease;
-      z-index: 999;
-    }
-    #scrollTopBtn:hover {
-      background-color: #66d090;
-    }
-</style>
+  <link rel="favicon" href="favicon.ico" type="image/x-icon">
 </head>
+
 <body>
   <nav>
     <a href="#about">About</a>
@@ -203,107 +28,163 @@
 
   <section id="about">
     <h2>About Me</h2>
-    <p>I’m a techie with a twist — blending automation logic, data science, and creativity. From automating business workflows to crafting Instagram-first comics, I build things that solve, inspire, and entertain.</p>
+    <p>I’m a techie with a twist — I simplify workflows, build smart dashboards, and automate the boring stuff — all
+      with creativity.
+      With 2+ years of experience in Data Analysis and RPA, I’ve delivered automation solutions using Electroneek,
+      UiPath, and Python Selenium, and built insightful dashboards using Power BI Python and other tools. Currently
+      pursuing my MSc in Data Science at the University of Greenwich, I love turning data into stories and problems into
+      elegant code.</p>
   </section>
 
   <section id="projects">
     <h2>Featured Projects</h2>
     <div class="projects">
       <div class="project">
-        <h3>Cleani-lyzer</h3>
-        <p>Web app for data cleaning, EDA, and AI summaries. Built with Flask, Bootstrap, AI21 Jamba.</p>
+        <a href="https://github.com/Aniket-Kote/data-cleaner_analyzer" target="_blank"
+          style="text-decoration: none; color: inherit;">
+          <h3>Cleani-lyzer</h3>
+          <p>Web app for data cleaning, EDA, and AI summaries. Built with Flask, Bootstrap, AI21 Jamba.</p>
+        </a>
       </div>
+
       <div class="project">
-        <h3>BMI to Diet Recommender</h3>
-        <p>Suggests diet plans based on body structure & BMI using ML models. Creative meets practical.</p>
-      </div>
-      <div class="project">
-        <h3>The Sarcastics Comic Series</h3>
-        <p>React-based Instagram comic. Tech, humor & friendships — all in 9 panels.</p>
+        <a href="https://github.com/Aniket-Kote/data-cleaner_analyzer" target="_blank"
+          style="text-decoration: none; color: inherit;">
+          <h3>Mailyzer</h3>
+          <p>A smart email fetcher and report generator.</p>
+        </a>
       </div>
     </div>
-  </section>
 
-  <section id="skills">
-    <h2>Tech & Creative Stack</h2>
-    <div class="skills-grid">
-      <div class="skill-item"><h3>Python</h3><p>Data, scripting, ML</p></div>
-      <div class="skill-item"><h3>RPA</h3><p>UiPath & Electroneek bots</p></div>
-      <div class="skill-item"><h3>Power BI</h3><p>Dashboards & analytics</p></div>
-      <div class="skill-item"><h3>JavaScript</h3><p>Interactive frontends</p></div>
-      <div class="skill-item"><h3>MongoDB</h3><p>NoSQL database design</p></div>
-      <div class="skill-item"><h3>HTML/CSS</h3><p>Responsive & clean design</p></div>
-      <div class="skill-item"><h3>React.js</h3><p>SPAs & UIs</p></div>
-      <div class="skill-item"><h3>Video & Design</h3><p>Adobe Premiere, Figma</p></div>
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="https://github.com/Aniket-Kote" target="_blank"
+        style="display: inline-block; padding: 10px 20px; background-color: var(--accent); color: var(--bg); border-radius: 6px; text-decoration: none; font-weight: 600; transition: background-color 0.3s;">View
+        All Projects</a>
     </div>
-  </section>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="job">
-      <h3>Associate Software Engineer — Neebal Technologies (2022-2023)</h3>
-      <ul>
+
+    <section id="skills">
+      <h2>Tech & Creative Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <h3>Python</h3>
+          <p>Data, scripting, ML</p>
+        </div>
+        <div class="skill-item">
+          <h3>Power BI</h3>
+          <p>Dashboards & analytics</p>
+        </div>
+        <div class="skill-item">
+          <h3>Airflow</h3>
+          <p>For ETL</p>
+        </div>
+        <div class="skill-item">
+          <h3>RPA</h3>
+          <p>UiPath , Electroneek bots & other tools</p>
+        </div>
+        <div class="skill-item">
+          <h3>HTML/CSS</h3>
+          <p>Responsive & clean design</p>
+        </div>
+        <div class="skill-item">
+          <h3>JavaScript</h3>
+          <p>Interactive frontends</p>
+        </div>
+        <div class="skill-item">
+          <h3>MongoDB</h3>
+          <p>NoSQL database design</p>
+        </div>
+        <div class="skill-item">
+          <h3>SQL</h3>
+          <p>SQL database design</p>
+        </div>
+        <div class="skill-item">
+          <h3>React.js</h3>
+          <p>SPAs & UIs</p>
+        </div>
+        <div class="skill-item">
+          <h3>Video & Design</h3>
+          <p>Adobe Premiere,Adobe Photshop , Figma</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="job">
+        <h3>Associate Software Engineer — Neebal Technologies (2022-2023)</h3>
+        <ul>
+          <li>Created dashboards using Power BI and Python for decision-making.</li>
+          <li>Automated workflows reducing manual effort by 70%.</li>
+          <li>Collaborated across departments to tailor digital solutions.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>GenAI Intern — IGT Solutions (2025)</h3>
+        <!-- <ul>
         <li>Created dashboards using Power BI and Python for decision-making.</li>
         <li>Automated workflows reducing manual effort by 70%.</li>
         <li>Collaborated across departments to tailor digital solutions.</li>
-      </ul>
-    </div>
-    <div class="job">
-      <h3>Freelance Video Editor / Videographer — Askncapture Media (2017–Present)</h3>
+      </ul> -->
+      </div>
+      <div class="job">
+        <h3>Freelance Video Editor / Videographer — Askncapture Media (2017–Present)</h3>
+        <ul>
+          <li>Led production of wellness and eCommerce video content.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Power BI Developer — Freelancer (2022–Present)</h3>
+        <ul>
+          <li>Designed mobile-first dashboards to enhance UX & insights.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>RPA Developer — Freelancer (2022–Present)</h3>
+        <ul>
+          <li>Built RPA flows using UiPath/Electroneek & supported process redesign.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
       <ul>
-        <li>Led production of wellness and eCommerce video content.</li>
+        <li><strong>MSc. Data Science</strong> — University of Greenwich (2024–2025)</li>
+        <li><strong>B.E. in Computer Engineering</strong> — SPPU (2018–2022)</li>
       </ul>
-    </div>
-    <div class="job">
-      <h3>Power BI Developer — Freelancer (2022–Present)</h3>
-      <ul>
-        <li>Designed mobile-first dashboards to enhance UX & insights.</li>
-      </ul>
-    </div>
-    <div class="job">
-      <h3>RPA Developer — Freelancer (2022–Present)</h3>
-      <ul>
-        <li>Built RPA flows using UiPath/Electroneek & supported process redesign.</li>
-      </ul>
-    </div>
-  </section>
+    </section>
 
-  <section id="education">
-    <h2>Education</h2>
-    <ul>
-      <li><strong>MSc. Data Science</strong> — University of Greenwich (2024–2025)</li>
-      <li><strong>B.E. in Computer Engineering</strong> — SPPU (2018–2022)</li>
-    </ul>
-  </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:aniket.kote080799@gmail.com"
+          style="color: var(--accent);">aniket.kote080799@gmail.com</a></p>
+      <p>Location: Greater London, UK</p>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:aniket.kote080799@gmail.com" style="color: var(--accent);">aniket.kote080799@gmail.com</a></p>
-    <p>Location: Greater London, UK</p>
-  </section>
+    <footer>
+      <p>&copy; 2025 Aniket Kote — Crafted with code & creativity ⚡</p>
+    </footer>
 
-  <footer>
-    <p>&copy; 2025 Aniket Kote — Crafted with code & creativity ⚡</p>
-  </footer>
+    <button id="scrollTopBtn" title="Scroll to Top">⬆</button>
 
-  <button id="scrollTopBtn" title="Scroll to Top">⬆</button>
-
-  <script>
-    const text = "I automate. I analyze. I aestheticize.";
-    let i = 0;
-    function type() {
-      document.getElementById("typed-text").textContent = text.slice(0, i++);
-      if (i <= text.length) setTimeout(type, 70);
-    }
-    type();
+    <script>
+      const text = "I automate. I analyze. I implement.";
+      let i = 0;
+      function type() {
+        document.getElementById("typed-text").textContent = text.slice(0, i++);
+        if (i <= text.length) setTimeout(type, 70);
+      }
+      type();
       // Scroll to top button logic
-    const scrollBtn = document.getElementById("scrollTopBtn");
-    window.onscroll = function () {
-      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
-    };
-    scrollBtn.onclick = function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-</script>
+      const scrollBtn = document.getElementById("scrollTopBtn");
+      window.onscroll = function () {
+        scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+      };
+      scrollBtn.onclick = function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+    </script>
 </body>
+
 </html>
