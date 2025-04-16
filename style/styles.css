@@ -84,7 +84,7 @@
     border-radius: 10px;
     transition: transform 0.3s;
   }
-  .project:hover, .skill-item:hover {
+  .project:hover{
     transform: translateY(-5px);
   }
   .project h3, .skill-item h3 {
