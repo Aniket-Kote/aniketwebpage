@@ -95,6 +95,13 @@
     color: var(--secondary);
     font-size: 0.95rem;
   }
+
+
+  .job,.video_link{
+    margin-top: 20px;
+  }
+
+
   ul {
     padding-left: 20px;
     line-height: 1.8;
