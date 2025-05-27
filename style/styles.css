@@ -73,6 +73,11 @@
     margin: 30px auto 10px;
     object-fit: cover;
   }
+  .intro-img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+    /* filter: grayscale(); */
+  }
   .projects, .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
