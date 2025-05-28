@@ -78,6 +78,9 @@
     transition: transform 0.3s;
     /* filter: grayscale(); */
   }
+  .mantras{
+    display: flex;
+  }
   .projects, .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -104,10 +107,9 @@
 
   .job,.video_link{
     margin-top: 20px;
+    line-height: 70px;
   }
-
-
-  ul {
+   ul {
     padding-left: 20px;
     line-height: 1.8;
     color: var(--secondary);
