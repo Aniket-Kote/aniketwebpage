@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
   <nav>
     <a href="/">Home</a>
     <a href="#about">About</a>
@@ -25,9 +26,20 @@
     <img src="image.jpg" alt="Aniket Kote" class="intro-img" />
     <h1>Hey, I'm Aniket </h1>
     <h3 style="font-style: italic;font-weight: 200;">Namaste | नमस्ते</h3>
-    <div class="mantras"><p><span style="color: #78e2a0;">3 Mantras :</span> &nbsp;
-    <p id="typed-text"></p>
-    </p></div>
+    <div class="mantras">
+      <p><span style="color: #78e2a0;">3 Mantras :</span> &nbsp;
+      <p id="typed-text"></p>
+      </p>
+    </div>
+    <div class="resumes">
+      <button class="btn_data rsm_btn">
+        <a href="https://drive.google.com/file/d/1XyREWrKKXJ4ploehYCm9pJ4UOM357T0e/view?usp=sharing" target="_blank" class="resume-link">Data Analyst Resume</a>
+      </button>
+      <!-- <button class="btn_data rsm_btn">
+      <a href="" class="resume-link">RPA Developer Resume</a>
+
+      </button> -->
+    </div>
   </header>
 
   <section id="about">
@@ -68,7 +80,7 @@
 
     <div style="text-align: center; margin-top: 30px;">
       <a href="https://github.com/Aniket-Kote" target="_blank"
-        style="display: inline-block; padding: 10px 20px; background-color: var(--accent); color: var(--bg); border-radius: 6px; text-decoration: none; font-weight: 600; transition: background-color 0.3s;">View
+        class="btn_data">View
         All Projects</a>
     </div>
 
@@ -146,8 +158,9 @@
       <div class="job">
         <h3>CreoNexTech (2024-2025)</h3>
         <p style="font-style: italic;opacity: 0.9;text-decoration: underline;">(Data Analyst , RPA , Python
-          Developer,Operation Head)</p>
+          Developer, Head of Operations and Co-founder)</p>
         <ul>
+
           <li>Created dashboards using Power BI, Tableau and Google Looker and Python for decision-making.</li>
           <li>Automated workflows resulting in reduction of manual effort.</li>
           <li>Collaborated across departments to tailor digital solutions.</li>
@@ -168,12 +181,15 @@
 
       </div>
       <div class="job">
-        <h3>Freelance Video Editor / Videographer — Askncapture Media (Present)</h3>
+        <h3>Freelance Video Editor / Videographer — Askncapture Media </h3>
         <ul>
           <li>Led production of wellness and eCommerce video content.</li>
+          <li>Edited and optimized videos for social media platforms.</li>
+          <li>Collaborated with clients to deliver engaging visual stories.</li>
+
         </ul>
       </div>
-      <div class="job">
+      <!-- <div class="job">
         <h3>Power BI Developer — Freelancer (Present)</h3>
         <ul>
           <li>Designed mobile-first dashboards to enhance UX & insights.</li>
@@ -184,7 +200,7 @@
         <ul>
           <li>Built RPA flows using UiPath/Electroneek & supported process redesign.</li>
         </ul>
-      </div>
+      </div> -->
     </section>
 
     <section id="education">
@@ -197,9 +213,10 @@
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:aniket.kote080799@gmail.com"
+      <p>Email : <a href="mailto:aniket.kote080799@gmail.com"
           style="color: var(--accent);">aniket.kote080799@gmail.com</a></p>
-      <p>Location: The Earth</p>
+          <p>Phone : +91-9405492147 / +44-7823704335</p>
+      <p>Location : The Earth</p>
     </section>
 
     <footer>
@@ -207,7 +224,15 @@
     </footer>
 
     <button id="scrollTopBtn" title="Scroll to Top">⬆</button>
-
+ <div class="background" style="z-index: -1;">
+  <!-- Using common classes to minimize redundancy -->
+  <span class="ball"></span>
+  <span class="ball"></span>
+  <span class="ball"></span>
+  <span class="ball"></span>
+  <span class="ball"></span>
+  <span class="ball"></span>
+</div>
     <script>
       const text = " Automate.  Analyze.  Implement.";
       let i = 0;
