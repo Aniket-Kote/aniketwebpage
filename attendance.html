@@ -1,13 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycbxCnXIdH-0L6AkJMn5oAGidBAH6_plogKk-C9HyhQ-QB8rXuZfA5TOk4DtJvZP85jzB/exec" />
-    <title>SHIVNAAD VADHYAPATHAK ATTENDANCE</title>
-  </head>
-  <body>
-    <p>SHIVNAAD VADHYAPATHAK ATTENDANCE App...<br />
-    <a href="https://script.google.com/macros/s/AKfycbxCnXIdH-0L6AkJMn5oAGidBAH6_plogKk-C9HyhQ-QB8rXuZfA5TOk4DtJvZP85jzB/exec">Click here if not redirected</a>.</p>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <title>QR Attendance</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body { background-color: #e8a621; }
+    #video { width: 100%; height: auto; border: 1px solid #ddd; border-radius: .25rem; }
+    .attendee-card { max-width: 400px; margin: 0 auto; }
+    .list-group-item { font-family: monospace; word-break: break-word; white-space: pre-line; }
+    .shiv_logo { width: 100px; height: 100px; mix-blend-mode: multiply; background: none; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-dark w-100 border bg-transparent shadow-sm">
+    <div class="container-fluid d-flex flex-column justify-content-center">
+      <h1 class="text-white mb-0" style="text-shadow: grey 2px 2px 5px;">शिवनाद वाद्यपथक</h1><br>
+      <h6 class="text-white p-0">नाशिक</h6>
+    </div>
+  </nav>
+
+  <main class="container py-4 d-flex justify-content-center">
+    <div class="card attendee-card shadow-sm">
+      <div class="card-body text-center">
+        <h5>Enter Your Email</h5>
+        <div class="input-group mb-3">
+          <input type="email" id="emailInput" class="form-control" placeholder="you@domain.com" required />
+          <button id="validateBtn" class="btn btn-success">Validate</button>
+        </div>
+        <div id="emailFeedback" class="mb-3"></div>
+
+        <div id="scannerArea" style="display:none;">
+          <h5>Scan QR</h5>
+          <video id="video" muted playsinline class="mb-3"></video>
+          <div id="output" class="alert alert-secondary mb-3">Waiting for QR code…</div>
+          <button id="saveAttendance" class="btn btn-success w-100 mb-3" disabled>Save Attendance</button>
+          <ul id="attendeeList" class="list-group text-start" style="max-height:200px; overflow-y:auto;"></ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import QrScanner from 'https://unpkg.com/qr-scanner@1.4.2/qr-scanner.min.js';
+    QrScanner.WORKER_PATH = 'https://unpkg.com/qr-scanner@1.4.2/qr-scanner-worker.min.js';
+
+    const API_URL = 'https://qr-attendance-api.shivnaad.workers.dev';
+
+    let scannedData = [], scanning = false, scanner, userEmail;
+
+    const emailInput    = document.getElementById('emailInput');
+    const validateBtn   = document.getElementById('validateBtn');
+    const emailFeedback = document.getElementById('emailFeedback');
+    const scannerArea   = document.getElementById('scannerArea');
+    const video         = document.getElementById('video');
+    const output        = document.getElementById('output');
+    const saveBtn       = document.getElementById('saveAttendance');
+    const attendeeList  = document.getElementById('attendeeList');
+
+    function updateList() {
+      attendeeList.innerHTML = '';
+      scannedData.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.innerHTML = `<strong>Name:</strong> ${item.parsed.name || 'Unknown'}`;
+        attendeeList.appendChild(li);
+      });
+      saveBtn.disabled = !scannedData.length;
+    }
+
+    function initScanner() {
+      scanner = new QrScanner(video, result => {
+        if (scanning) return;
+        scanning = true;
+        if (!scannedData.some(e => e.raw === result.data)) {
+          const parsed = {};
+          result.data.split(/\r?\n/).forEach(line => {
+            const [k, ...v] = line.split(':');
+            if (v.length) parsed[k.trim().toLowerCase()] = v.join(':').trim();
+          });
+          scannedData.push({ raw: result.data, parsed });
+          output.textContent = `Scanned: ${parsed.name || result.data}`;
+          output.className = 'alert alert-info';
+          updateList();
+        }
+        scanner.stop();
+        setTimeout(() => {
+          scanning = false;
+          scanner.start().catch(console.error);
+        }, 1500);
+      }, {
+        inversionMode: 'both',
+        highlightScanRegion: true,
+        highlightCodeOutline: true,
+        maxScansPerSecond: 8,
+        preferredCamera: 'environment'
+      });
+
+      scanner.start().catch(err => {
+        output.textContent = `Error: ${err}`;
+        output.className = 'alert alert-danger';
+      });
+    }
+
+    validateBtn.addEventListener('click', async () => {
+      const email = emailInput.value.trim();
+      if (!email) {
+        emailFeedback.innerHTML = '<div class="alert alert-warning">Enter an email</div>';
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API_URL}/validate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        const result = await res.json();
+        if (res.ok && result.valid) {
+          userEmail = email;
+          emailFeedback.innerHTML = '<div class="alert alert-success">Validated. You can now scan.</div>';
+          validateBtn.disabled = emailInput.disabled = true;
+          scannerArea.style.display = 'block';
+          initScanner();
+        } else {
+          emailFeedback.innerHTML = `<div class="alert alert-danger">${result.message || 'Validation failed'}</div>`;
+        }
+      } catch (err) {
+        emailFeedback.innerHTML = `<div class="alert alert-danger">Error: ${err.message}</div>`;
+      }
+    });
+
+    saveBtn.addEventListener('click', async () => {
+  saveBtn.disabled = true;
+  output.textContent = 'Saving…';
+  output.className = 'alert alert-warning';
+
+  try {
+    const rows = scannedData.map(item => {
+      const entry = item.parsed || {};
+      return {
+        email: userEmail || '',
+        admission_number: entry.admission_number || '',
+        name: entry.name || '',
+        address: entry.address || '',
+        phone: entry.phone || '',
+        dob: entry.dob || '',
+        gender: entry.gender || ''
+      };
+    });
+
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(rows)
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      let msg = `✅ Saved: ${result.saved}`;
+      if (result.skipped) msg += ` | ⛔ Skipped: ${result.skipped}`;
+      output.textContent = msg;
+      output.className = 'alert alert-success';
+      
+      // Only clear successfully saved entries
+      if (result.saved > 0) {
+        scannedData = [];
+        updateList();
+      }
+    } else {
+      output.textContent = `Error: ${result.error}`;
+      output.className = 'alert alert-danger';
+    }
+  } catch (err) {
+    output.textContent = `Error: ${err.message}`;
+    output.className = 'alert alert-danger';
+  } finally {
+    saveBtn.disabled = false;
+  }
+});
+
+  </script>
+</body>
 </html>

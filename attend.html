@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <title>QR Attendance</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <script src="https://apis.google.com/js/api.js"></script>
   <style>
     body { background-color: #e8a621; }
     #video { width: 100%; height: auto; border: 1px solid #ddd; border-radius: .25rem; }
@@ -47,9 +46,7 @@
     import QrScanner from 'https://unpkg.com/qr-scanner@1.4.2/qr-scanner.min.js';
     QrScanner.WORKER_PATH = 'https://unpkg.com/qr-scanner@1.4.2/qr-scanner-worker.min.js';
 
-    const SHEET_ID = '1BWnadw4ZbUIzmxxKwNr1DDvPgVFMMDv-VST255synCY';
-    const RANGE = 'NewData!A1';
-  
+    const API_URL = 'https://qr-attendance-api.shivnaad.workers.dev';
 
     let scannedData = [], scanning = false, scanner, userEmail;
 
@@ -61,10 +58,6 @@
     const output        = document.getElementById('output');
     const saveBtn       = document.getElementById('saveAttendance');
     const attendeeList  = document.getElementById('attendeeList');
-
-    gapi.load("client:auth2", () => {
-      gapi.auth2.init({ client_id: CLIENT_ID });
-    });
 
     function updateList() {
       attendeeList.innerHTML = '';
@@ -104,70 +97,92 @@
         maxScansPerSecond: 8,
         preferredCamera: 'environment'
       });
+
       scanner.start().catch(err => {
         output.textContent = `Error: ${err}`;
         output.className = 'alert alert-danger';
       });
     }
 
-    validateBtn.addEventListener('click', () => {
+    validateBtn.addEventListener('click', async () => {
       const email = emailInput.value.trim();
       if (!email) {
         emailFeedback.innerHTML = '<div class="alert alert-warning">Enter an email</div>';
         return;
       }
-      // Skip actual validation for now
-      userEmail = email;
-      emailFeedback.innerHTML = '<div class="alert alert-success">Validated. You can now scan.</div>';
-      validateBtn.disabled = emailInput.disabled = true;
-      scannerArea.style.display = 'block';
-      initScanner();
+
+      try {
+        const res = await fetch(`${API_URL}/validate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        const result = await res.json();
+        if (res.ok && result.valid) {
+          userEmail = email;
+          emailFeedback.innerHTML = '<div class="alert alert-success">Validated. You can now scan.</div>';
+          validateBtn.disabled = emailInput.disabled = true;
+          scannerArea.style.display = 'block';
+          initScanner();
+        } else {
+          emailFeedback.innerHTML = `<div class="alert alert-danger">${result.message || 'Validation failed'}</div>`;
+        }
+      } catch (err) {
+        emailFeedback.innerHTML = `<div class="alert alert-danger">Error: ${err.message}</div>`;
+      }
     });
 
     saveBtn.addEventListener('click', async () => {
-      saveBtn.disabled = true;
-      output.textContent = 'Saving…';
-      output.className = 'alert alert-warning';
+  saveBtn.disabled = true;
+  output.textContent = 'Saving…';
+  output.className = 'alert alert-warning';
 
-      try {
-        await gapi.auth2.getAuthInstance().signIn({ scope: "https://www.googleapis.com/auth/spreadsheets" });
-        await gapi.client.setApiKey(API_KEY);
-        await gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4");
+  try {
+    const rows = scannedData.map(item => {
+      const entry = item.parsed || {};
+      return {
+        email: userEmail || '',
+        admission_number: entry.admission_number || '',
+        name: entry.name || '',
+        address: entry.address || '',
+        phone: entry.phone || '',
+        dob: entry.dob || '',
+        gender: entry.gender || ''
+      };
+    });
 
-        const now = new Date().toISOString();
-        const rows = scannedData.map(item => {
-          const entry = item.parsed || {};
-          return [
-            now,
-            userEmail || '',
-            entry.admission_number || '',
-            entry.name || '',
-            entry.address || '',
-            entry.phone || '',
-            entry.dob || '',
-            entry.gender || ''
-          ];
-        });
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(rows)
+    });
 
-        const response = await gapi.client.sheets.spreadsheets.values.append({
-          spreadsheetId: SHEET_ID,
-          range: RANGE,
-          valueInputOption: "RAW",
-          insertDataOption: "INSERT_ROWS",
-          resource: { values: rows }
-        });
+    const result = await response.json();
 
-        output.textContent = `Saved ${rows.length} rows.`;
-        output.className = 'alert alert-success';
+    if (response.ok) {
+      let msg = `✅ Saved: ${result.saved}`;
+      if (result.skipped) msg += ` | ⛔ Skipped: ${result.skipped}`;
+      output.textContent = msg;
+      output.className = 'alert alert-success';
+      
+      // Only clear successfully saved entries
+      if (result.saved > 0) {
         scannedData = [];
         updateList();
-
-      } catch (err) {
-        console.error(err);
-        output.textContent = `Error: ${err.message || err}`;
-        output.className = 'alert alert-danger';
       }
-    });
+    } else {
+      output.textContent = `Error: ${result.error}`;
+      output.className = 'alert alert-danger';
+    }
+  } catch (err) {
+    output.textContent = `Error: ${err.message}`;
+    output.className = 'alert alert-danger';
+  } finally {
+    saveBtn.disabled = false;
+  }
+});
+
   </script>
 </body>
 </html>
