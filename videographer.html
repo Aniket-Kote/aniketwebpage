@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EchoFrame — Visual Storyteller</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style/styles.css">
+    <style>
+        html{
+            max-width: 100vw;
+            
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 0;
+            background: #14181b;
+            color: #f3f3f3;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(20, 24, 27, 0.92);
+            padding: 12px 5vw;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 32px #0004;
+        }
+
+        nav .logo {
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 1.2em;
+            color: #78e2a0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 500;
+            transition: color .2s;
+        }
+
+        nav a:hover {
+            color: #78e2a0;
+        }
+
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(120deg, #23242a 70%, #78e2a0 110%);
+            position: relative;
+            text-align: center;
+            padding-top: 60px;
+        }
+        section{
+            max-width: 100vw;
+            
+        }
+
+        .hero-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: .32;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5em;
+            letter-spacing: 2px;
+            margin-bottom: .1em;
+        }
+
+        .hero-sub {
+            font-size: 1.3em;
+            color: #afe7c9;
+        }
+
+        .hero-scroll {
+            margin-top: 3em;
+        }
+
+        .hero-scroll span {
+            font-size: 2em;
+            color: #fff;
+            display: inline-block;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(16px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            padding: 60px 0;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .about-card {
+            background: rgba(36, 42, 48, .92);
+            border-radius: 18px;
+            box-shadow: 0 2px 38px #0002;
+            padding: 2em;
+            margin: 60px 0;
+            text-align: left;
+        }
+
+        .about-card h2 {
+            color: #78e2a0;
+            letter-spacing: 1px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.7em;
+            align-items: center;
+        }
+
+        .profile-pic {
+            border-radius: 16px;
+            width: 100%;
+            box-shadow: 0 6px 30px #0005;
+            object-fit: cover;
+        }
+
+        .feature-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2em;
+            margin: 2em 0;
+        }
+
+        .feature-item {
+            background: #232834;
+            border-radius: 13px;
+            overflow: hidden;
+            box-shadow: 0 3px 24px #0002;
+            transition: transform .18s;
+            position: relative;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-8px) scale(1.045);
+        }
+
+        .feature-item video,
+        .feature-item img {
+            width: 100%;
+            display: block;
+            max-height: 240px;
+            object-fit: cover;
+            border-radius: 0 0 13px 13px;
+        }
+
+        .feature-info {
+            padding: 1.1em;
+        }
+
+        .feature-title {
+            font-size: 1.25em;
+            color: #78e2a0;
+            font-weight: 600;
+        }
+
+        .feature-desc {
+            font-size: .99em;
+            color: #bedbca;
+        }
+
+        .skills-marquee {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.6em;
+            background: #161b1f;
+            padding: .8em 0;
+            align-items: center;
+            margin: 2em 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0002;
+        }
+
+        .skills-marquee .skill-chip {
+            background: #252a31;
+            color: #aeeec9;
+            border-radius: 6px;
+            padding: .6em 1.2em;
+            font-weight: 600;
+            letter-spacing: .5px;
+            white-space: nowrap;
+            font-size: 1.1em;
+        }
+
+        .gallery-fullscreen {
+            background: linear-gradient(120deg, #14181b 80%, #38e7d7 170%);
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-title {
+            font-size: 2.2em;
+            letter-spacing: 1.3px;
+            color: #78e2a0;
+            margin-top: 2em;
+        }
+
+        .mosaic {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            width: calc(100vw - 80px);
+            max-width: 1440px;
+            margin: 3em auto;
+        }
+
+        .mosaic-item {
+            position: relative;
+            border-radius: 11px;
+            overflow: hidden;
+            box-shadow: 0 2px 14px #0003;
+            background: #1e2327;
+            transition: transform .14s;
+        }
+
+        .mosaic-item:hover {
+            transform: scale(1.04);
+        }
+
+        .mosaic-item video,
+        .mosaic-item img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 220px;
+        }
+
+        .mosaic-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(20, 30, 30, .6);
+            color: #fff;
+            font-size: .97em;
+            padding: .7em 1.2em;
+            border-radius: 0 0 11px 11px;
+            letter-spacing: 1px;
+        }
+
+        .timeline {
+            border-left: 3px solid #78e2a0;
+            margin: 3em 0 3em 2em;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background: #78e2a0;
+            border-radius: 50%;
+            position: absolute;
+            left: -7px;
+            top: 0;
+        }
+
+        .timeline-event {
+            margin-left: 2em;
+            margin-bottom: 2.5em;
+            position: relative;
+        }
+
+        .timeline-event:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-title {
+            font-size: 1.13em;
+            color: #78e2a0;
+            font-weight: 600;
+        }
+
+        .timeline-role {
+            opacity: .86;
+            font-style: italic;
+        }
+
+        .timeline-desc {
+            color: #dbeee4;
+            font-size: .99em;
+        }
+
+        .contact-cta {
+            background: #161b1e;
+            border-radius: 14px;
+            padding: 2.2em 2em;
+            margin: 3em 0;
+            box-shadow: 0 2px 30px #0002;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #78e2a0;
+            color: #222;
+            padding: 1em 2em;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            box-shadow: 0 4px 24px #78e2a055;
+            letter-spacing: .8px;
+            margin: 1.8em 0 .2em 0;
+            font-size: 1.1em;
+            transition: background .17s;
+        }
+
+        .cta-btn:hover {
+            background: #38e7d7;
+            color: #14181b;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.3em;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1em;
+        }
+
+        .social-links a {
+            color: #78e2a0;
+            font-size: 1.3em;
+            text-decoration: none;
+            transition: color .18s;
+        }
+
+        .social-links a:hover {
+            color: #38e7d7;
+        }
+
+        footer {
+            padding: 1.3em 0;
+            text-align: center;
+            color: #a3dbc9;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 950px) {
+            .about-grid {
+                display: block;
+            }
+        }
+
+        @media (max-width:700px) {
+
+            .feature-gallery,
+            .mosaic {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 32px 0;
+            }
+
+            .about-card {
+                margin: 2em 0;
+            }
+
+            nav {
+                padding: 8px 2vw;
+            }
+
+            .hero-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <span class="logo">Askncapture Media</span>
+        <span>
+            <a href="#about">About</a>
+            <a href="#work">Showcase</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#skills">Skills</a>
+            <a href="#journey">Journey</a>
+            <a href="#contact">Contact</a>
+        </span>
+    </nav>
+
+    <!-- Cinematic Hero -->
+    <div class="hero-section" id="home">
+        <video class="hero-bg-video" src="showreel-bg.mp4" autoplay loop muted poster="poster.jpg"></video>
+        <div class="hero-content">
+            <div class="hero-title">Here Stories come to<br>Life</div>
+            <div class="hero-sub">I'm Aniket — Creative Videographer & Editor</div>
+            <p style="font-size:1.23em;margin:1em 0 0 0;">Capturing moments.<br />Creating emotion.<br />Transforming
+                brands.</p>
+            <div class="hero-scroll"><span>↓</span></div>
+        </div>
+    </div>
+
+    <!-- About: Personality-focused card layout -->
+    <section class="section" id="about">
+        <div class="about-card about-grid">
+            <div>
+                <h2>Hello, I'm Alex</h2>
+                <p><b>From indie films to global brands</b>, my lens is about capturing emotion, texture, and narrative.
+                    I blend <b>cinematic style</b> with bold edits and a keen sense for storytelling. Your project will
+                    be <b>felt</b> — not just seen.</p>
+                <ul style="margin:1.3em 0 0 .6em; color:#afe7c9;font-size:1.01em;">
+                    <li>✨ <b>360° Video Creation</b>: Direct, shoot, cut, color, deliver</li>
+                    <li>🎬 <b>Diverse Experience</b>: Music, brands, events, short docs</li>
+                    <li>🚀 <b>Inventive & Reliable</b>: New ideas, crisp execution</li>
+                </ul>
+            </div>
+            <div>
+                <img src="profile-alex.jpg" alt="Alex Reyes Portrait" class="profile-pic" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Work: Visual-driven grid -->
+    <section class="section" id="work">
+        <h2 style="color:#78e2a0;">Showcase</h2>
+        <div class="feature-gallery">
+            <div class="feature-item">
+<div class="feature-item">
+  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:13px; box-shadow:0 3px 24px #0002;">
+    <iframe 
+      src="https://www.youtube.com/embed/GeDO3Jkiw1w" 
+      title="Life is Life | One Step closer | AsknCapture Media" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen 
+      style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+    </iframe>
+  </div>
+  <div class="feature-info">
+    <div class="feature-title">Life is Life | One Step closer</div>
+    <div class="feature-desc">Short film: Live a life better than yesterday – by AsknCapture Media.</div>
+  </div>
+</div>
+                <div class="feature-info">
+                    <div class="feature-title">Urban Pulse</div>
+                    <div class="feature-desc">Award-winning short – movement, light, & sound in the city.</div>
+                </div>
+            </div>
+            <div class="feature-item">
+                <img src="brandcampaign-still.jpg" alt="Brand Campaign" />
+                <div class="feature-info">
+                    <div class="feature-title">Brand Campaign: NeoTech</div>
+                    <div class="feature-desc">Branded vision. Fresh POV. Viral engagement.</div>
+                </div>
+            </div>
+            <div class="feature-item">
+                <video src="festival-life.mp4" controls poster="festival-thumb.jpg"></video>
+                <div class="feature-info">
+                    <div class="feature-title">Festival Life</div>
+                    <div class="feature-desc">Documented UK’s top summer festival, 2024.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Immersive Video Gallery: Mosaic fullscreen -->
+    <section class="gallery-fullscreen" id="gallery">
+        <div class="gallery-title">Video Gallery</div>
+        <div class="mosaic">
+            <div class="mosaic-item">
+                <video src="gallery1.mp4" controls poster="gallery1-thumb.jpg"></video>
+                <div class="mosaic-caption">Street Stories</div>
+            </div>
+            <div class="mosaic-item">
+                <img src="gallery2.jpg" alt="Still from creative ad">
+                <div class="mosaic-caption">Creative Ad <span style="color:#78e2a0;">(AdWeek Top Pick)</span></div>
+            </div>
+            <div class="mosaic-item">
+                <video src="gallery3.mp4" controls poster="gallery3-thumb.jpg"></video>
+                <div class="mosaic-caption">Music: Nights In Color</div>
+            </div>
+            <div class="mosaic-item">
+                <video src="gallery4.mp4" controls poster="gallery4-thumb.jpg"></video>
+                <div class="mosaic-caption">Mini-Doc: The Makers</div>
+            </div>
+            <div class="mosaic-item">
+                <img src="gallery5.jpg" alt="Stills photography">
+                <div class="mosaic-caption">Behind the Lens</div>
+            </div>
+            <!-- Add more items as desired -->
+        </div>
+    </section>
+
+    <!-- Skills: Animated marquee -->
+    <section class="section" id="skills">
+        <h2 style="color:#78e2a0;">Signature Skills</h2>
+        <div class="skills-marquee" id="skills-marquee">
+            <span class="skill-chip">Directing</span>
+            <span class="skill-chip">Cinematography</span>
+            <span class="skill-chip">Video Editing</span>
+            <span class="skill-chip">Color Grading</span>
+            <span class="skill-chip">Motion Graphics</span>
+            <span class="skill-chip">Drone Cinematics</span>
+            <span class="skill-chip">Scriptwriting</span>
+            <span class="skill-chip">Sound Design</span>
+            <span class="skill-chip">Lighting</span>
+            <span class="skill-chip">Storyboarding</span>
+        </div>
+    </section>
+
+    <!-- Journey/Experience: Vertical timeline -->
+    <section class="section" id="journey">
+        <h2 style="color:#78e2a0;">My Journey</h2>
+        <div class="timeline">
+            <div class="timeline-event">
+                <div class="timeline-title">Spark Media House</div>
+                <div class="timeline-role">(Lead Videographer, 2023–2025)</div>
+                <div class="timeline-desc">Directed campaigns for major festivals, led post-production, mentored junior
+                    creatives.</div>
+            </div>
+            <div class="timeline-event">
+                <div class="timeline-title">Freelance Cinematography</div>
+                <div class="timeline-role">(2020–Present)</div>
+                <div class="timeline-desc">Worked with indie filmmakers, brands, musicians, and event organizers — over
+                    70+ unique projects.</div>
+            </div>
+            <div class="timeline-event">
+                <div class="timeline-title">City Studios</div>
+                <div class="timeline-role">(Assistant Editor, 2019–2020)</div>
+                <div class="timeline-desc">Cut trailers, managed gear, honed color grading skills.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / CTA -->
+    <section class="section" id="contact">
+        <div class="contact-cta">
+            <h2 style="color:#78e2a0;">Let's Collaborate!</h2>
+            <p style="font-size:1.09em; margin:.8em 0 0 0;">Ready for a fresh, visually striking campaign or story?</p>
+            <a href="mailto:alex@echoframe.studio" class="cta-btn">Let’s Connect</a>
+            <div class="social-links">
+                <a href="https://instagram.com/yourprofile" target="_blank" title="Instagram">IG</a>
+                <a href="https://vimeo.com/yourprofile" target="_blank" title="Vimeo">Vimeo</a>
+                <a href="https://youtube.com/yourchannel" target="_blank" title="YouTube">YouTube</a>
+            </div>
+            <div style="color:#aeeec9;margin-top:.7em;">London, UK & Available Worldwide</div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 EchoFrame — Crafted with vision & light.
+    </footer>
+
+    <script>
+        // Optional: Animated skills marquee (auto-scroll)
+        const marquee = document.getElementById('skills-marquee');
+        let scrollAmt = 0;
+        setInterval(() => {
+            scrollAmt = (scrollAmt + 1) % (marquee.scrollWidth - marquee.clientWidth + 1);
+            marquee.scrollLeft = scrollAmt;
+        }, 40);
+    </script>
+</body>
+
+</html>

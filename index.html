@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Aniket Kote — AI Engineer focused on Agentic AI, RAG &amp; LLM systems. Portfolio of production LLM products, RAG pipelines, automation and full-stack work.">
+  <meta property="og:title" content="Aniket Kote — AI Engineer">
+  <meta property="og:description"
+    content="AI Engineer focused on Agentic AI, RAG &amp; LLM systems. Also: Full-Stack, Data &amp; Automation.">
+  <meta property="og:image" content="image.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#78e2a0">
+
+  <title>Aniket Kote — AI Engineer</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://www.aniketkote.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style/styles.css">
+</head>
+
+<body>
+
+  <svg class="icon-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow-up" viewBox="0 0 24 24">
+      <path d="m5 12 7-7 7 7" />
+      <path d="M12 19V5" />
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24">
+      <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+      <path d="M18 17V9" />
+      <path d="M13 17V5" />
+      <path d="M8 17v-3" />
+    </symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24">
+      <path d="m9 18 6-6-6-6" />
+    </symbol>
+    <symbol id="i-code" viewBox="0 0 24 24">
+      <path d="m18 16 4-4-4-4" />
+      <path d="m6 8-4 4 4 4" />
+      <path d="m14.5 4-5 16" />
+    </symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24">
+      <path d="M12 20v2" />
+      <path d="M12 2v2" />
+      <path d="M17 20v2" />
+      <path d="M17 2v2" />
+      <path d="M2 12h2" />
+      <path d="M2 17h2" />
+      <path d="M2 7h2" />
+      <path d="M20 12h2" />
+      <path d="M20 17h2" />
+      <path d="M20 7h2" />
+      <path d="M7 20v2" />
+      <path d="M7 2v2" />
+      <rect x="4" y="4" width="16" height="16" rx="2" />
+      <rect x="8" y="8" width="8" height="8" rx="1" />
+    </symbol>
+    <symbol id="i-database" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+      <path d="M3 12A9 3 0 0 0 21 12" />
+    </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24">
+      <path d="M12 15V3" />
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <path d="m7 10 5 5 5-5" />
+    </symbol>
+    <symbol id="i-github" viewBox="0 0 24 24">
+      <path
+        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+      <path d="M9 18c-4.51 2-5-2-7-2" />
+    </symbol>
+    <symbol id="i-languages" viewBox="0 0 24 24">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+      <circle cx="12" cy="10" r="3" />
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M4 5h16" />
+      <path d="M4 12h16" />
+      <path d="M4 19h16" />
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path
+        d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+    </symbol>
+    <symbol id="i-workflow" viewBox="0 0 24 24">
+      <rect width="8" height="8" x="3" y="3" rx="2" />
+      <path d="M7 11v4a2 2 0 0 0 2 2h4" />
+      <rect width="8" height="8" x="13" y="13" rx="2" />
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24">
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24">
+      <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+      <path d="M22 10v6" />
+      <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+    </symbol>
+    <symbol id="i-award" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="6" />
+      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+    </symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24">
+      <path
+        d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+      <path d="M20 3v4" />
+      <path d="M22 5h-4" />
+      <path d="M4 17v2" />
+      <path d="M5 18H3" />
+    </symbol>
+  </svg>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <div class="bg-layer" aria-hidden="true">
+    <div class="glow glow-cursor" id="cursorGlow"></div>
+    <div class="noise"></div>
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+    <div class="grid-pattern"></div>
+    <div class="particles" id="particles"></div>
+    <div class="scanlines"></div>
+  </div>
+
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">AK</span>
+        <span class="brand-name">Aniket Kote</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact" class="nav-cta">Let's Talk</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="icon"><use href="#i-menu"></use></svg>
+      </button>
+    </div>
+
+    <div class="nav-mobile" id="navMobile" hidden>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="badge reveal">Available for New Projects</div>
+
+          <h1 class="hero-title reveal delay-1">
+            Hey, I'm<br>
+            <span class="text-gradient">Aniket Kote</span>
+          </h1>
+
+          <div class="hero-role reveal delay-2">
+            <svg class="icon accent"><use href="#i-sparkles"></use></svg>
+            <span>AI Engineer — Agentic AI, RAG &amp; LLM Systems</span>
+          </div>
+
+          <p class="hero-mantras reveal delay-3">
+            <span class="muted">3 Mantras :</span>
+            <span class="typed accent font-mono" id="typed"></span><span class="cursor-blink">|</span>
+          </p>
+
+          <ul class="hero-points reveal delay-3">
+            <li><svg class="icon accent"><use href="#i-chevron"></use></svg>Shipped AI deal-intelligence Chrome extension — 30+ beta users</li>
+            <li><svg class="icon accent"><use href="#i-chevron"></use></svg>9-step multi-agent GTM system built as a Claude Code plugin</li>
+            <li><svg class="icon accent"><use href="#i-chevron"></use></svg>Backend for a platform live with 455K+ distributors &amp; 1.25M+ retailers</li>
+          </ul>
+
+          <div class="hero-actions reveal delay-4">
+            <a href="Aniket_Kote_RESUME.pdf" target="_blank" rel="noreferrer" class="btn btn-accent">
+              <svg class="icon"><use href="#i-download"></use></svg> My Resume
+            </a>
+            <div class="btn-row">
+              <a href="https://github.com/Aniket-Kote" target="_blank" rel="noreferrer" class="btn btn-glass"
+                aria-label="GitHub">
+                <svg class="icon"><use href="#i-github"></use></svg>
+              </a>
+              <a href="mailto:aniket.kote080799@gmail.com" class="btn btn-glass" aria-label="Email">
+                <svg class="icon"><use href="#i-mail"></use></svg>
+              </a>
+              <a href="https://linkedin.com/in/aniket-kote-a14826169" target="_blank" rel="noreferrer"
+                class="btn btn-glass" aria-label="LinkedIn">
+                <svg class="icon"><use href="#i-linkedin"></use></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media reveal delay-2">
+          <div class="portrait">
+            <div class="portrait-glow"></div>
+            <div class="portrait-frame"></div>
+            <div class="portrait-img">
+              <img src="image.jpg" alt="Aniket Kote" referrerpolicy="no-referrer"
+                onerror="this.onerror=null;this.src='https://picsum.photos/seed/aniket/800/800';">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section section-alt">
+      <div class="container">
+        <div class="reveal">
+          <header class="section-head">
+            <h2>About Me</h2>
+            <p>AI and full-stack engineer with hands-on experience designing, shipping and operating
+              LLM-powered products, RAG pipelines and agentic automation in production.</p>
+            <span class="head-rule"></span>
+          </header>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p>As Consultant and Developer at <strong>Dextra Labs</strong>, I architected and led
+              an AI deal-intelligence Chrome extension for Gmail, built a 9-step multi-agent GTM automation
+              system as a Claude Code plugin, and contributed backend engineering to a working-capital and
+              subsidy-claims platform live with 455,000+ distributors and 1.25M+ retailers.</p>
+            <p>Earlier career work in data analytics, RPA and Power BI — plus an MSc in Data Science from the
+              University of Greenwich — gives me a strong grounding in data pipelines, reporting and stakeholder
+              communication. I own delivery end to end: architecture, prompt engineering, testing, deployment
+              and iteration.</p>
+
+            <div class="stats">
+              <div class="stat">
+                <h5>4+</h5>
+                <p>Years Exp</p>
+              </div>
+              <div class="stat">
+                <h5>20+</h5>
+                <p>Projects</p>
+              </div>
+              <div class="stat">
+                <h5>10+</h5>
+                <p>Certs</p>
+              </div>
+              <div class="stat">
+                <h5>AI</h5>
+                <p>Specialist</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="glass about-card reveal delay-1">
+            <div class="card-icon">
+              <svg class="icon"><use href="#i-pin"></use></svg>
+            </div>
+            <h4>Based in</h4>
+            <p class="muted">India | UK</p>
+            <span class="divider"></span>
+            <h4>Education</h4>
+            <p class="muted small">MSc, Data Science @ University of Greenwich, UK</p>
+            <span class="divider"></span>
+            <h4>Focus</h4>
+            <p class="muted small">Agentic AI · RAG · LLM Systems · Full-Stack</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-top reveal">
+          <header class="section-head">
+            <h2>Featured Projects</h2>
+            <p>Handpicked projects showcasing AI, automation and data analysis.</p>
+            <span class="head-rule"></span>
+          </header>
+          <a href="https://github.com/Aniket-Kote" target="_blank" rel="noreferrer" class="btn btn-glass btn-sm">
+            View All on GitHub <svg class="icon"><use href="#i-chevron"></use></svg>
+          </a>
+        </div>
+
+        <div class="project-grid">
+          <article class="glass project-card reveal">
+            <div class="project-body">
+              <div class="project-top">
+                <div class="chip-icon"><svg class="icon"><use href="#i-code"></use></svg></div>
+                <div class="project-links">
+                  <a href="https://github.com/Aniket-Kote" target="_blank" rel="noreferrer" aria-label="Source">
+                    <svg class="icon"><use href="#i-github"></use></svg>
+                  </a>
+                </div>
+              </div>
+              <h3>Automated Employee Onboarding</h3>
+              <p>End-to-end system automating account provisioning, asset management and induction training
+                delivery; integrated with HR databases and Active Directory — cut onboarding setup time by 60%.</p>
+              <div class="tags">
+                <span>Python</span><span>Active Directory</span><span>Automation</span><span>HR Tech</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass project-card reveal delay-1">
+            <div class="project-body">
+              <div class="project-top">
+                <div class="chip-icon"><svg class="icon"><use href="#i-chart"></use></svg></div>
+                <div class="project-links"></div>
+              </div>
+              <h3>EBITDA &amp; Workforce Allocation Dashboard</h3>
+              <p>Interactive Power BI dashboard visualising EBITDA and workforce allocation across departments
+                with real-time data via Power Automate — so heads can spot bottlenecks and forecast resource needs.</p>
+              <div class="tags">
+                <span>Power BI</span><span>DAX</span><span>Power Automate</span><span>BI</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass project-card reveal">
+            <div class="project-body">
+              <div class="project-top">
+                <div class="chip-icon"><svg class="icon"><use href="#i-workflow"></use></svg></div>
+                <div class="project-links"></div>
+              </div>
+              <h3>AWS Alert Email Processing &amp; Tracking</h3>
+              <p>Tool that ingests, parses and classifies AWS alert emails using regex and NLP, generates concise
+                summaries and logs to a central tracker wired into Power BI and YouTrack — ~40% less manual tracking.</p>
+              <div class="tags">
+                <span>Python</span><span>NLP</span><span>Regex</span><span>Power BI</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass project-card reveal delay-1">
+            <div class="project-body">
+              <div class="project-top">
+                <div class="chip-icon"><svg class="icon"><use href="#i-sparkles"></use></svg></div>
+                <div class="project-links">
+                  <a href="https://github.com/Aniket-Kote/data-cleaner_analyzer" target="_blank" rel="noreferrer"
+                    aria-label="Source">
+                    <svg class="icon"><use href="#i-github"></use></svg>
+                  </a>
+                </div>
+              </div>
+              <h3>Data Cleaning &amp; EDA Web App</h3>
+              <p>Flask + Bootstrap web application for data cleaning, exploratory data analysis and AI-generated
+                report summaries — streamlining data preparation before analytics.</p>
+              <div class="tags">
+                <span>Flask</span><span>Bootstrap</span><span>AI21 Jamba</span><span>EDA</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass project-card reveal">
+            <div class="project-body">
+              <div class="project-top">
+                <div class="chip-icon"><svg class="icon"><use href="#i-mail"></use></svg></div>
+                <div class="project-links"></div>
+              </div>
+              <h3>Email Insights Automation</h3>
+              <p>Smart email fetcher and report generator that automates email processing and produces structured
+                insight reports for business stakeholders.</p>
+              <div class="tags">
+                <span>Python</span><span>Automation</span><span>Reporting</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass project-card reveal delay-1">
+            <div class="project-body">
+              <div class="project-top">
+                <div class="chip-icon"><svg class="icon"><use href="#i-database"></use></svg></div>
+                <div class="project-links"></div>
+              </div>
+              <h3>SQL Optimisation &amp; Data Pipelines</h3>
+              <p>Improved large-query performance and built automated data pipelines, reducing data retrieval time
+                by 40% across reporting workloads.</p>
+              <div class="tags">
+                <span>SQL</span><span>Python</span><span>Excel</span><span>ETL</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass project-card reveal">
+            <div class="project-body">
+              <div class="project-top">
+                <div class="chip-icon"><svg class="icon"><use href="#i-workflow"></use></svg></div>
+                <div class="project-links"></div>
+              </div>
+              <h3>GIS Automation</h3>
+              <p>Automated data extraction and processing from SVG maps, cutting manual effort by 40% for
+                geographic reporting workflows.</p>
+              <div class="tags">
+                <span>Python</span><span>SVG</span><span>Automation</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass project-card reveal delay-1">
+            <div class="project-body">
+              <div class="project-top">
+                <div class="chip-icon"><svg class="icon"><use href="#i-cpu"></use></svg></div>
+                <div class="project-links"></div>
+              </div>
+              <h3>Product Listing Bot <span class="muted-inline">· Freelance</span></h3>
+              <p>Bot for 1688 marketplace analysis that streamlined the product listing process for a client's
+                e-commerce operations.</p>
+              <div class="tags">
+                <span>Python</span><span>Selenium</span><span>Scraping</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <div class="reveal">
+          <header class="section-head">
+            <h2>Tech &amp; Creative Stack</h2>
+            <p>My technical toolkit for solving complex problems.</p>
+            <span class="head-rule"></span>
+          </header>
+        </div>
+
+        <div class="skill-grid">
+          <div class="glass skill-card reveal">
+            <div class="skill-head">
+              <div class="chip-icon"><svg class="icon"><use href="#i-sparkles"></use></svg></div>
+              <h4>GenAI &amp; LLM Systems</h4>
+            </div>
+            <p>RAG pipelines, agentic AI, tool/function calling, MCP, LangChain, prompt engineering, LLM
+              evaluation &amp; retrieval-grounding, Claude API.</p>
+          </div>
+
+          <div class="glass skill-card reveal delay-1">
+            <div class="skill-head">
+              <div class="chip-icon"><svg class="icon"><use href="#i-code"></use></svg></div>
+              <h4>Programming &amp; APIs</h4>
+            </div>
+            <p>Python (primary), JavaScript, SQL, R, Node.js, PHP, REST APIs, OAuth2, Flask, VBA.</p>
+          </div>
+
+          <div class="glass skill-card reveal delay-2">
+            <div class="skill-head">
+              <div class="chip-icon"><svg class="icon"><use href="#i-database"></use></svg></div>
+              <h4>Data Engineering</h4>
+            </div>
+            <p>ETL/ELT design, Apache Airflow, DBT, Airbyte, Pandas, NumPy, scikit-learn, forecasting and
+              predictive analytics.</p>
+          </div>
+
+          <div class="glass skill-card reveal delay-3">
+            <div class="skill-head">
+              <div class="chip-icon"><svg class="icon"><use href="#i-chart"></use></svg></div>
+              <h4>BI &amp; Reporting</h4>
+            </div>
+            <p>Power BI (DAX), Tableau, Looker, Matplotlib, Seaborn, advanced Excel, KPI dashboarding and data
+              storytelling.</p>
+          </div>
+
+          <div class="glass skill-card reveal">
+            <div class="skill-head">
+              <div class="chip-icon"><svg class="icon"><use href="#i-workflow"></use></svg></div>
+              <h4>Automation &amp; RPA</h4>
+            </div>
+            <p>n8n, Zapier, Power Automate, UiPath (Certified), Electroneek (Certified), Selenium, Jenkins, process
+              auditing.</p>
+          </div>
+
+          <div class="glass skill-card reveal delay-1">
+            <div class="skill-head">
+              <div class="chip-icon"><svg class="icon"><use href="#i-database"></use></svg></div>
+              <h4>Databases</h4>
+            </div>
+            <p>PostgreSQL, MongoDB, Oracle, NoSQL, ChromaDB and advanced SQL for structured &amp; vector workloads.</p>
+          </div>
+
+          <div class="glass skill-card reveal delay-2">
+            <div class="skill-head">
+              <div class="chip-icon"><svg class="icon"><use href="#i-cpu"></use></svg></div>
+              <h4>Cloud &amp; DevOps</h4>
+            </div>
+            <p>GCP, Azure, Docker, Kubernetes, GitHub Actions, containerised production deploys and observability.</p>
+          </div>
+
+          <div class="glass skill-card reveal delay-3">
+            <div class="skill-head">
+              <div class="chip-icon"><svg class="icon"><use href="#i-languages"></use></svg></div>
+              <h4>Web &amp; UI</h4>
+            </div>
+            <p>HTML, CSS, React.js, Bootstrap — full-stack and backend services for production AI products.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="reveal">
+          <header class="section-head">
+            <h2>Experience</h2>
+            <p>My professional journey across AI, software and data.</p>
+            <span class="head-rule"></span>
+          </header>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-head">
+              <div>
+                <h3>Consultant &amp; Developer</h3>
+                <p class="accent">Dextra Labs</p>
+                <p class="role">AI, Automation &amp; Full-Stack · Mumbai, India</p>
+              </div>
+              <span class="period">Dec 2025 — Present</span>
+            </div>
+            <ul>
+              <li>Architected and led an AI deal-intelligence Chrome extension for Gmail: designed the RAG/LLM agent
+                pipeline with tool-calling against the Gmail API and took it from idea to a live Chrome Web Store
+                launch with 30+ beta users.</li>
+              <li>Built a 9-step multi-agent GTM system that sources leads and creates outreach campaigns end to end,
+                delivered as a Claude Code plugin that needs only a spec sheet as input.</li>
+              <li>Designed retrieval-grounding logic and structured function-calling patterns to keep LLM outputs
+                grounded in real deal context, moving the agent from prototype to production.</li>
+              <li>Built and maintained backend services for a working-capital and subsidy-claims platform live with
+                455,000+ distributors and 1.25M+ retailers, supporting $75M+ in processed secondary sales.</li>
+              <li>Directed a 2–4 person engineering team from concept to launch on two products as main technical
+                decision-maker for stakeholders.</li>
+              <li>Reduced deployment time by 80% by containerising production services on GCP and Azure with Docker
+                and Kubernetes.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-head">
+              <div>
+                <h3>Freelance Developer</h3>
+                <p class="accent">Automan Solutions</p>
+                <p class="role">Data Engineering &amp; Analytics · Remote</p>
+              </div>
+              <span class="period">May 2025 — Nov 2025</span>
+            </div>
+            <ul>
+              <li>Delivered two custom AI applications for small-business clients as sole technical decision-maker,
+                owning discovery through go-live and reducing manual effort by 75%.</li>
+              <li>Designed and deployed tool-integrated automation agents for customer support and operational
+                insight, cutting support workload by 50%.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-head">
+              <div>
+                <h3>GenAI Intern</h3>
+                <p class="accent">IGT Solutions</p>
+                <p class="role">AI Research &amp; Development · Remote</p>
+              </div>
+              <span class="period">Jan 2025 — Apr 2025</span>
+            </div>
+            <ul>
+              <li>Designed and built a proof-of-concept generative-AI customer-support chatbot in Python using
+                open-source LLMs, with intent recognition, entity extraction and context-aware dialogue.</li>
+              <li>Improved response accuracy by designing intent-recognition and sentiment-tagging models integrated
+                with a vector database; worked on model performance tuning with engineering teams.</li>
+              <li>Engineered prompt templates and tuned model parameters to boost relevance and reduce off-topic
+                outputs.</li>
+              <li>Integrated FAQ lookup, scheduling and sentiment tagging via REST APIs and built the UI in HTML, CSS
+                and JavaScript.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-head">
+              <div>
+                <h3>Freelance Data Analyst &amp; RPA Developer</h3>
+                <p class="accent">CreoNexTech</p>
+                <p class="role">Data &amp; Automation · Remote</p>
+              </div>
+              <span class="period">Oct 2023 — Apr 2025</span>
+            </div>
+            <ul>
+              <li>Cut data-ingestion latency by 40% by building Python/SQL automation pipelines that replaced manual
+                data handling, presenting insights directly to clients.</li>
+              <li>Deployed analytics tools (Power BI, advanced Excel) to track business performance across branch
+                operations.</li>
+              <li>Built custom JavaScript/CSS applications to improve usability and productivity, working with product
+                managers on requirements and value streams.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-head">
+              <div>
+                <h3>Associate Software Engineer</h3>
+                <p class="accent">Neebal Technologies</p>
+                <p class="role">Data Analyst, RPA &amp; Power BI Developer · Mumbai, India</p>
+              </div>
+              <span class="period">Jan 2022 — Sep 2023</span>
+            </div>
+            <ul>
+              <li>Reduced manual workload by 70% by building Python/SQL ETL pipelines, automation scripts and RPA
+                workflows across 17+ internal projects as project lead.</li>
+              <li>Cut reporting time from two days to four hours by designing real-time KPI dashboards in Power BI
+                for cross-functional stakeholders in Agile sprints.</li>
+              <li>Created Python-based tools for email automation, data extraction and custom reporting; debugged data
+                layers for accurate analytics.</li>
+              <li>Designed and delivered training programmes on Power Platform best practices and Agile delivery.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section section-alt">
+      <div class="container">
+        <div class="reveal">
+          <header class="section-head">
+            <h2>Education</h2>
+            <p>Academic background and certifications.</p>
+            <span class="head-rule"></span>
+          </header>
+        </div>
+
+        <div class="edu-grid">
+          <div class="glass edu-card reveal">
+            <div class="chip-icon edu-icon"><svg class="icon"><use href="#i-cap"></use></svg></div>
+            <div class="edu-top">
+              <h3>MSc, Data Science</h3>
+              <span class="accent bold">2024 — 2025</span>
+            </div>
+            <p class="muted">University of Greenwich, UK</p>
+            <p class="focus">Machine Learning, Data Engineering, Business Intelligence</p>
+            <span class="rule-short"></span>
+          </div>
+
+          <div class="glass edu-card reveal delay-1">
+            <div class="chip-icon edu-icon"><svg class="icon"><use href="#i-cap"></use></svg></div>
+            <div class="edu-top">
+              <h3>BE, Computer Science</h3>
+              <span class="accent bold">2018 — 2022</span>
+            </div>
+            <p class="muted">Savitribai Phule Pune University, India</p>
+            <p class="focus">CGPA: 8.67</p>
+            <span class="rule-short"></span>
+          </div>
+        </div>
+
+        <div class="certs reveal">
+          <h4 class="certs-title">
+            <svg class="icon accent"><use href="#i-award"></use></svg> Certifications
+          </h4>
+          <ul class="cert-list">
+            <li>Building with the Claude API — Anthropic</li>
+            <li>Claude Code in Action — Anthropic</li>
+            <li>Introduction to Model Context Protocol — Anthropic</li>
+            <li>Introduction to Agent Skills — Anthropic</li>
+            <li>Power BI Data Analyst Associate</li>
+            <li>UiPath Certified RPA Associate</li>
+            <li>Electroneek RPA Developer</li>
+            <li>SQL for Data Science — Coursera</li>
+            <li>Python for Data Analysis</li>
+            <li>SQL badges — HackerRank</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="reveal">
+          <div class="glass contact-shell">
+            <div class="contact-panel">
+              <div class="contact-inner">
+                <h2>Let's build something<br>amazing together.</h2>
+                <p>I'm always open to discussing new projects, creative ideas or opportunities to be part of your
+                  visions.</p>
+
+                <div class="contact-grid">
+                  <a href="mailto:aniket.kote080799@gmail.com" class="contact-card">
+                    <div class="contact-icon">
+                      <svg class="icon"><use href="#i-mail"></use></svg>
+                    </div>
+                    <div>
+                      <p class="label">Email Me</p>
+                      <p class="value">aniket.kote080799@gmail.com</p>
+                    </div>
+                  </a>
+
+                  <div class="contact-card">
+                    <div class="contact-icon">
+                      <svg class="icon"><use href="#i-phone"></use></svg>
+                    </div>
+                    <div>
+                      <p class="label">Call Me</p>
+                      <p class="value">+91 94054 92147</p>
+                      <p class="sub">+44 7823 704335</p>
+                    </div>
+                  </div>
+
+                  <a href="https://linkedin.com/in/aniket-kote-a14826169" target="_blank" rel="noreferrer"
+                    class="contact-card">
+                    <div class="contact-icon">
+                      <svg class="icon"><use href="#i-linkedin"></use></svg>
+                    </div>
+                    <div>
+                      <p class="label">LinkedIn</p>
+                      <p class="value">Aniket Kote</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Aniket Kote · Crafted with code &amp; creativity</p>
+      <div class="footer-links">
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top" hidden>
+    <svg class="icon"><use href="#i-arrow-up"></use></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
